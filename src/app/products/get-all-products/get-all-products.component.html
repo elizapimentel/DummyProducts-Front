@@ -1,0 +1,73 @@
+<h1>Produtos</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <tbody>
+  <td>Código</td>
+  <td>Nome</td>
+  <td>Descrição</td>
+  <td>Desconto (%)</td>
+  <td>Avaliação</td>
+  <td>Estoque</td>
+  <td>Marca</td>
+  <td>Categoria</td>
+  <td>Thumbnail</td>
+  <td>Preço</td>
+  <td>Imagens</td>
+  <!-- ngFor = diretiva -> adiciona regra de negocio ao componente -->
+  <tr *ngFor="let produto of showProducts">
+    <td
+      [class.bg-warning]="!produto.id">
+      <a [routerLink]="['/{id}']"
+         title="Id" alt="Id"
+         class="btn btn-xs btn-info">
+      {{ produto.id }}
+      </a>
+    </td>
+    <td
+      [class.bg-warning]="!produto.title">
+      {{ produto.title }}
+    </td>
+    <td
+      [class.bg-warning]="!produto.description">
+      {{ produto.description }}
+    </td>
+    <td>
+      {{ produto.discountPercentage }}
+    </td>
+    <td>
+      {{ produto.rating }}
+    </td>
+    <td>
+      {{ produto.stock }}
+    </td>
+    <td>
+      {{ produto.brand }}
+    </td>
+    <td>
+      {{ produto.category }}
+    </td>
+    <td>
+      {{ produto.thumbnail }}
+    </td>
+    <td>
+      {{ produto.price }}
+    </td>
+    <td>
+      {{ produto.images }}
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<p *ngIf="showProducts.length==0"> Nenhuma produto cadastrado.</p>
+
+<!-- <tr>
+    <th> Produtos
+    </th>
+    <th class="text-center">
+      <a [routerLink]="['/bd']"
+         class="btn btn-xs btn-success"
+         (click)="showProducts">
+      </a>
+    </th>
+  </tr>-->
