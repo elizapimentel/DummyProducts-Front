@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: angular-app
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: always
+    env_file: ./config/.env
+    ports:
+      - ${ANGULAR_LOCAL_PORT}:${ANGULAR_DOCKER_PORT}
+    networks:
+      - dummy-products-api-network
+
+networks:
+  dummy-products-api-network:
+    driver: bridge
