@@ -7,11 +7,11 @@ services:
       context: ./
       dockerfile: Dockerfile
     restart: always
-    env_file: ./config/.env
-    ports:
-      - ${ANGULAR_LOCAL_PORT}:${ANGULAR_DOCKER_PORT}
+    env_file: .env
     networks:
       - dummy-products-api-network
+    ports:
+      - ${ANGULAR_LOCAL_PORT}:${ANGULAR_DOCKER_PORT}
 
 networks:
   dummy-products-api-network:
