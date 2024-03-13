@@ -1,23 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import {HttpClientModule, provideHttpClient, withFetch} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { ProductsModule } from './products/products.module';
+import { GetAllProductsComponent} from "./products/get-all-products/get-all-products.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GetAllProductsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    ProductsModule
+    HttpClientModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [AppComponent]
 })
