@@ -4,6 +4,7 @@ import { GetAllProductsComponent } from './products/getAll/get-all-products.comp
 import { CreateNewProductComponent } from './products/create/create-new-product.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { GetByIdComponent } from './products/get-by-id/get-by-id.component';
 
 
 
@@ -13,6 +14,7 @@ const routes: Routes = [
     pathMatch: 'full' },
   { path: 'products', component: GetAllProductsComponent },
   { path: 'newProd', component: CreateNewProductComponent },
+  { path: 'product/:id', component: GetByIdComponent },
   
 
 ];
