@@ -1,4 +1,4 @@
-<h1>Cadastrar produto</h1>
+<h2>Cadastrar produto</h2>
 
 <div class="well">
   <form #formProduct="ngForm">
@@ -162,9 +162,9 @@
         type="submit"
         class="btn btn-success"
         (click)="createProduct()"
-        value="Cadastrar"
+        value="Salvar"
         [disabled]="!formProduct.form.valid">
-      <a [routerLink]="['/tarefas']"
+      <a [routerLink]="['/products']"
         class="btn btn-default">
         <span class="glyphicon glyphicon-chevron-left" 
           aria-hidden="true"></span> Voltar
