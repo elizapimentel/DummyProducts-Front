@@ -27,4 +27,8 @@ export class GetAllProductsComponent implements OnInit {
   add() {
     this.router.navigate(['/newProd']);
   }
+
+  getById(id: number) {
+    this.router.navigate(['/product', id]);
+  }
 }
