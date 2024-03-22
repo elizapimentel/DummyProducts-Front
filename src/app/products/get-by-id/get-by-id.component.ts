@@ -27,4 +27,5 @@ export class GetByIdComponent {
     this.service.getById(id).subscribe(item => this.products = item);
   }
 
+
 }

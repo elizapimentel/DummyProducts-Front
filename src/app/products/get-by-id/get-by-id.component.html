@@ -37,7 +37,11 @@
       <td>{{ products.stock }}</td>
       <td>{{ products.brand }}</td>
       <td>{{ products.category }}</td>
-      <td><img [src]="products.thumbnail" [alt]="products.title" class="img-thumbnail"></td>
+      <td>
+        <div>
+          <img [src]="products.thumbnail" [alt]="" class="img-thumbnail">
+        </div>
+      </td>
       <td>
         <div *ngFor="let image of products.images">
           <img [src]="image" [alt]="" class="img-thumbnail">
