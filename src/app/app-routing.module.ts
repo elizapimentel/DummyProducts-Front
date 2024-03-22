@@ -4,7 +4,7 @@ import { GetAllProductsComponent } from './products/getAll/get-all-products.comp
 import { CreateNewProductComponent } from './products/create/create-new-product.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { GetByIdComponent } from './products/get-by-id/get-by-id.component';
+import { GetByIdComponent } from './products/getById/get-by-id.component';
 
 
 
