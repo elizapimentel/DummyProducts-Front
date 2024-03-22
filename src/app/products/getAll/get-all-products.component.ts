@@ -30,12 +30,7 @@ export class GetAllProductsComponent implements OnInit {
     this.router.navigate(['/newProd']);
   }
 
-  getById(id: number) {
-    
-    this.router.navigate(['/product', id]);
-  }
-
-  redirect() {
+  getById() {
     const productId = parseInt(this.codeProduct);
 
       if (!isNaN(productId)) {
