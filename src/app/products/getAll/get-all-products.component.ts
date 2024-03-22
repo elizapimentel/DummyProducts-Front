@@ -12,9 +12,12 @@ export class GetAllProductsComponent implements OnInit {
 
   showProducts: Product[] = [];
 
+  codeProduct: string;
+
   constructor(private service: ProductService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
+
     this.getAllProducts();
   }
 
@@ -29,6 +32,18 @@ export class GetAllProductsComponent implements OnInit {
   }
 
   getById(id: number) {
+    
     this.router.navigate(['/product', id]);
+  }
+
+  redirect() {
+    console.log('Redirecionando para o produto...');
+    const productId = parseInt(this.codeProduct);
+
+      if (!isNaN(productId)) {
+        console.log(productId);
+          this.router.navigate(['/product', productId]);
+      } 
+  
   }
 }

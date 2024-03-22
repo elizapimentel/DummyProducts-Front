@@ -5,21 +5,32 @@
       <div class="row mb-3">
         <div class="col d-flex justify-content-end">
           <a [routerLink]="['/', 'newProd']" class="btn btn-primary float-right">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Cadastrar novo
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            Cadastrar novo
           </a>
         </div>
+        <div class="form-group">
+          <label for="pesquisarPorId">Código:</label>
+          <input type="text" class="form-row" id="pesquisarPorId" name="pesquisarPorId" [(ngModel)]="codeProduct">
+          <button type="submit" class="btn btn-primary float-right" (click)="redirect()">
+            Pesquisar
+          </button>
+        </div>
       </div>
+      </div>
+      
+      <div>
 
       <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Produto</th>
+            <th>Em estoque</th>
+            <th>Valor (R$)</th>
+          </tr>
+        </thead>
         <tbody>
-          <thead>
-            <tr>
-              <th>Código</th>
-              <th>Produto</th>
-              <th>Em estoque</th>
-              <th>Valor (R$)</th>
-            </tr>
-          </thead>
 
           <tr *ngFor="let produto of showProducts">
             <td>
