@@ -17,7 +17,6 @@ export class GetAllProductsComponent implements OnInit {
   constructor(private service: ProductService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
-
     this.getAllProducts();
   }
 
@@ -37,11 +36,9 @@ export class GetAllProductsComponent implements OnInit {
   }
 
   redirect() {
-    console.log('Redirecionando para o produto...');
     const productId = parseInt(this.codeProduct);
 
       if (!isNaN(productId)) {
-        console.log(productId);
           this.router.navigate(['/product', productId]);
       } 
   
