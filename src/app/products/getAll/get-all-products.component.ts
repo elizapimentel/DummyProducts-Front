@@ -11,8 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class GetAllProductsComponent implements OnInit {
 
   showProducts: Product[] = [];
-
   codeProduct: string;
+  categoryProduct: string;
 
   constructor(private service: ProductService, private route: ActivatedRoute, private router: Router) {}
 
@@ -26,16 +26,12 @@ export class GetAllProductsComponent implements OnInit {
     });
   }
 
-  add() {
-    this.router.navigate(['/newProd']);
-  }
-
   getById() {
     const productId = parseInt(this.codeProduct);
 
       if (!isNaN(productId)) {
           this.router.navigate(['/product', productId]);
       } 
-  
   }
+
 }
