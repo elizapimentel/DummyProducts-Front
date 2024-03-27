@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CacheService {
-  private cache: any = {};
+  private cache: Map<string, any> = new Map();
 
   constructor() { }
 
@@ -14,5 +14,9 @@ export class CacheService {
 
   set(key: string, value: any): void {
     this.cache[key] = value;
+  }
+
+  clear(): void {
+    this.cache.clear();
   }
 }
