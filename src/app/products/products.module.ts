@@ -8,13 +8,16 @@ import {FormsModule} from "@angular/forms";
 import {GetAllProductsComponent} from "./getAll/get-all-products.component";
 import { CoreModule } from '../core/core.module';
 import { GetByIdComponent } from './getById/get-by-id.component';
+import { GetByCategoryComponent } from './getByCategory/get-by-category.component';
+
 
 
 @NgModule({
   declarations: [
     GetAllProductsComponent,
     CreateNewProductComponent,
-    GetByIdComponent
+    GetByIdComponent,
+    GetByCategoryComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,49 @@
+<div>
+
+    <a [routerLink]="['/products']" class="btn btn-outline-primary">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Voltar
+    </a>
+</div>
+
+<div class="row">
+    <div class="col">
+        <h2 class="text-center">Produtos por categoria</h2>
+    </div>
+    <div class="container">
+
+        <div>
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Produto</th>
+                        <th>Categoria</th>
+                        <th>Em estoque</th>
+                        <th>Valor (R$)</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let produto of products">
+                        <td>
+                            <a [routerLink]="['/product', produto.id]" class="btn btn-link">
+                                {{ produto.id }}
+                            </a>
+                        </td>
+                        <td>
+                            {{ produto.title }}
+                        </td>
+                        <td>
+                            {{ produto.category }}
+                        </td>
+                        <td>
+                            {{ produto.stock }}
+                        </td>
+                        <td>
+                            {{ produto.price }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+             <p *ngIf="products.length==0"> Nenhuma produto cadastrado nesta categoria.</p>
+        </div>

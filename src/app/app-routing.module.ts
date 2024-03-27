@@ -5,17 +5,21 @@ import { CreateNewProductComponent } from './products/create/create-new-product.
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { GetByIdComponent } from './products/getById/get-by-id.component';
+import { GetByCategoryComponent } from './products/getByCategory/get-by-category.component';
 
 
 
 const routes: Routes = [
-  { path: '',
+  {
+    path: '',
     redirectTo: '/products',
-    pathMatch: 'full' },
+    pathMatch: 'full'
+  },
   { path: 'products', component: GetAllProductsComponent },
   { path: 'newProd', component: CreateNewProductComponent },
   { path: 'product/:id', component: GetByIdComponent },
-  
+  { path: 'category/:category', component: GetByCategoryComponent },
+
 
 ];
 
