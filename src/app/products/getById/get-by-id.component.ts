@@ -23,7 +23,7 @@ export class GetByIdComponent {
   }
 
   findProductById() {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = +this.route.snapshot.paramMap.get('id'); //o + converte para number
     this.service.getById(id).subscribe(item => this.products = item);
   }
 
