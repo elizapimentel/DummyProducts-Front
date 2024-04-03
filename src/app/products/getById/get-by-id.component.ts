@@ -13,7 +13,19 @@ import { NgForm } from '@angular/forms';
 export class GetByIdComponent {
 
   @ViewChild('formProduct', { static: true }) formProduct: NgForm;
-  products: Product;
+  products: Product= {
+    id: null,
+    title: '',
+    description: '',
+    price: null,
+    discountPercentage: null,
+    rating: null,
+    stock: null,
+    brand: '',
+    category: '',
+    thumbnail: '',
+    images: []
+  };
 
   constructor(private service: ProductService, private router: Router,
     private route: ActivatedRoute) { }
@@ -23,8 +35,8 @@ export class GetByIdComponent {
   }
 
   findProductById() {
-    const id = +this.route.snapshot.paramMap.get('id'); //o + converte para number
-    this.service.getById(id).subscribe(item => this.products = item);
+    this.products.id = +this.route.snapshot.paramMap.get('id'); //o + converte para number
+    this.service.getById(this.products.id).subscribe(item => this.products = item);
   }
 
 
