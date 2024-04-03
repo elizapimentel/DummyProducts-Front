@@ -9,6 +9,7 @@ import {GetAllProductsComponent} from "./getAll/get-all-products.component";
 import { CoreModule } from '../core/core.module';
 import { GetByIdComponent } from './getById/get-by-id.component';
 import { GetByCategoryComponent } from './getByCategory/get-by-category.component';
+import { UpdateProductComponent } from './update/update-product.component';
 
 
 
@@ -17,7 +18,8 @@ import { GetByCategoryComponent } from './getByCategory/get-by-category.componen
     GetAllProductsComponent,
     CreateNewProductComponent,
     GetByIdComponent,
-    GetByCategoryComponent
+    GetByCategoryComponent,
+    UpdateProductComponent
   ],
   imports: [
     CommonModule,

@@ -83,12 +83,15 @@ export class ProductService {
             return filteredProducts;
           }),
           catchError(error => {
-            // Lida com erros
             console.error('Error fetching data:', error);
             return throwError(error);
           })
         );
     }
+  }
+
+  update(id: number, product: Product): Observable<Product> {
+    return this.http.put<Product>(`${this.URL}/update/${id}`, product);
   }
 
   // Limpa o cache quando a página é fechada

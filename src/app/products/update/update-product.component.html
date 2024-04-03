@@ -1,0 +1,51 @@
+<h2>Editar produto</h2>
+
+<div>
+    <a [routerLink]="['/products']" class="btn btn-outline-primary">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Voltar
+    </a>
+</div>
+
+<form #formProduct="ngForm" (ngSubmit)="updateProduct()">
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Produto</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+                <th>Desconto</th>
+                <th>Avaliação</th>
+                <th>Em Estoque</th>
+                <th>Marca</th>
+                <th>Categoria</th>
+                <th>Thumbnail</th>
+                <th>Imagens</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="product">
+                <td>{{ product.id }}</td>
+                <td><input type="text" [(ngModel)]="product.title" name="title"></td>
+                <td><input type="text" [(ngModel)]="product.description" name="description"></td>
+                <td><input type="number" [(ngModel)]="product.price" name="price"></td>
+                <td><input type="number" [(ngModel)]="product.discountPercentage" name="discount"></td>
+                <td><input type="number" [(ngModel)]="product.rating" name="rating"></td>
+                <td><input type="number" [(ngModel)]="product.stock" name="stock"></td>
+                <td><input type="text" [(ngModel)]="product.brand" name="brand"></td>
+                <td><input type="text" [(ngModel)]="product.category" name="category"></td>
+                <td>
+                    <div>
+                        <img [src]="product.thumbnail" [alt]="" class="img-thumbnail">
+                    </div>
+                </td>
+                <td>
+                    <div *ngFor="let image of product.images">
+                        <img [src]="image" [alt]="" class="img-thumbnail">
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>

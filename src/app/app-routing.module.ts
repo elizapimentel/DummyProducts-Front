@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { GetByIdComponent } from './products/getById/get-by-id.component';
 import { GetByCategoryComponent } from './products/getByCategory/get-by-category.component';
+import { UpdateProductComponent } from './products/update/update-product.component';
 
 
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'newProd', component: CreateNewProductComponent },
   { path: 'product/:id', component: GetByIdComponent },
   { path: 'category/:category', component: GetByCategoryComponent },
+  { path: 'update/:id', component: UpdateProductComponent },
 
 
 ];
