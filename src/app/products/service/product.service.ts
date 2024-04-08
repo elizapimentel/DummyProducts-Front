@@ -22,20 +22,20 @@ export class ProductService {
   }
 
   getAll(): Observable<Product[]> {
-     const cachedData = this.cacheService.get('products');
+    const cachedData = this.cacheService.get('products');
 
-     if (cachedData) {
-       return of(cachedData);
-     } else {
-    return this.http.get<Product[]>(this.URL).pipe(
-      map((products: Product[]) => {
-        products.forEach(product => {
-          product.price = parseFloat(product.price).toFixed(2);
-        });
-        this.cacheService.set('products', products);
-        return products;
-      })
-    );
+    if (cachedData) {
+      return of(cachedData);
+    } else {
+      return this.http.get<Product[]>(this.URL).pipe(
+        map((products: Product[]) => {
+          products.forEach(product => {
+            product.price = parseFloat(product.price).toFixed(2);
+          });
+          this.cacheService.set('products', products);
+          return products;
+        })
+      );
     }
   }
 
@@ -93,6 +93,40 @@ export class ProductService {
   update(id: number, product: Product): Observable<Product> {
     return this.http.put<Product>(`${this.URL}/update/${id}`, product);
   }
+
+  delete(id: number, deleteWholeItem: boolean, quantity?: number): Observable<any> {
+    let url = `${this.URL}/delete/${id}?deleteWholeItem=${deleteWholeItem}`;
+    if (!deleteWholeItem && quantity) {
+      url += `&quantity=${quantity}`;
+    }
+  
+    return this.http.delete(url).pipe(
+      tap(() => {
+        if (!deleteWholeItem) {
+          // Atualizar o cache apenas se for uma exclusão parcial
+          const cachedProducts: Product[] = this.cacheService.get('products');
+          if (cachedProducts) {
+            const updatedProducts = cachedProducts.map(product => {
+              if (product.id === id) {
+                // Diminuir o estoque do produto no cache
+                product.stock -= quantity;
+              }
+              return product;
+            });
+            this.cacheService.set('products', updatedProducts);
+          }
+        } else {
+          // Remover o produto do cache se for uma exclusão completa
+          const cachedProducts: Product[] = this.cacheService.get('products');
+          if (cachedProducts) {
+            const updatedProducts = cachedProducts.filter(product => product.id !== id);
+            this.cacheService.set('products', updatedProducts);
+          }
+        }
+      })
+    );
+  }
+  
 
   // Limpa o cache quando a página é fechada
   clearCacheOnPageClose(): void {

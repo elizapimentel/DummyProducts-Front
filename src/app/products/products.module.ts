@@ -10,6 +10,7 @@ import { CoreModule } from '../core/core.module';
 import { GetByIdComponent } from './getById/get-by-id.component';
 import { GetByCategoryComponent } from './getByCategory/get-by-category.component';
 import { UpdateProductComponent } from './update/update-product.component';
+import { DeleteProductComponent } from './delete/delete-product.component';
 
 
 
@@ -19,7 +20,8 @@ import { UpdateProductComponent } from './update/update-product.component';
     CreateNewProductComponent,
     GetByIdComponent,
     GetByCategoryComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    DeleteProductComponent
   ],
   imports: [
     CommonModule,

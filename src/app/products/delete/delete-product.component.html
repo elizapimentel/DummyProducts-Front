@@ -1,0 +1,61 @@
+<h2>Deletar produto</h2>
+
+<div>
+    <a [routerLink]="['/products']" class="btn btn-outline-primary">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        Voltar
+    </a>
+</div>
+<br>
+
+<div>
+    <form #formProduct="ngForm">
+        <div>
+
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr *ngIf="product">
+                        <th>Código</th>
+                        <th>Produto</th>
+                        <th>Em Estoque:  {{ product.stock }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="product">
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.title }}</td>
+                        <td class="form-group ">
+                            <label for="stockNumber">Selecione a quantidade a ser excluida </label>
+                            <select class="form-control" id="stockNumber" name="selectedQuantity" [(ngModel)]="selectedQuantity">
+                                <!-- <option value="0" disabled selected>Selecione a quantidade a ser excluida</option> -->
+                                <option *ngFor="let i of stockOptions" [value]="i">{{ i }}</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <p>O que deseja fazer?</p>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary mx-2" (click)="deleteProduct()">Deletar Estoque</button>
+            <button type="submit" class="btn btn-danger mx-2" (click)="deleteProductWholeItem()">Deletar
+                Produto</button>
+            <a [routerLink]="['/products']" class="btn btn-outline-primary mx-2">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Cancelar
+            </a>
+        </div>
+
+    </form>
+</div>
+
+<ng-template #formProductModal>
+    <div class="modal-body text-center">
+        <p>Você deseja mesmo deletar este item?</p>
+        <button type="button" class="btn btn-default" (click)="confirmDeleteWholeItem()">Sim</button>
+        <button type="button" class="btn btn-primary" (click)="onDeclineDelete()">Não</button>
+    </div>
+</ng-template>
