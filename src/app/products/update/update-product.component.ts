@@ -11,7 +11,7 @@ import { ProductService } from '../service/product.service';
 })
 export class UpdateProductComponent implements OnInit {
 
-  @ViewChild('formProduct', { static: true }) formTarefa: NgForm;
+  @ViewChild('formProduct', { static: true }) formProduct: NgForm;
   product: Product;
 
   constructor(private service: ProductService, private router: Router,
@@ -25,7 +25,7 @@ export class UpdateProductComponent implements OnInit {
   }
 
   updateProduct() {
-    if (this.formTarefa.form.valid) {
+    if (this.formProduct.form.valid) {
       this.service.update(this.product.id, this.product)
       .subscribe((updatedProduct: Product) => {
         // Atualiza o produto com os dados retornados após a atualização
