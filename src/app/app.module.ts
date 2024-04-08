@@ -5,6 +5,7 @@ import {HttpClientModule, provideHttpClient, withFetch} from '@angular/common/ht
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {ProductsModule} from "./products/products.module";
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {ProductsModule} from "./products/products.module";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ProductsModule
+    ProductsModule,
+    ModalModule.forRoot()
   ],
   providers: [
     provideClientHydration(),
