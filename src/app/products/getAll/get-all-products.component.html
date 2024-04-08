@@ -2,35 +2,35 @@
   <div class="col">
     <h2 class="text-center">Produtos</h2>
   </div>
-  <div class="container">
+</div>
+<div class="col d-flex justify-content-end align-items-center">
+  <a [routerLink]="['/', 'newProd']" class="btn btn-primary">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    Cadastrar novo
+  </a>
+</div>
 
-    <!-- <div class="row mb-3"> -->
-    <div class="col d-flex justify-content-end">
-      <a [routerLink]="['/', 'newProd']" class="btn btn-primary float-right">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        Cadastrar novo
-      </a>
-    </div>
 
-    <div class="col">
-      <div class="form-group">
-        <label for="searchById">Código:</label>
-        <input type="text" class="form-row" id="searchById" name="searchById" [(ngModel)]="codeProduct">
-        <button type="submit" class="btn btn-primary float-right" (click)="getById()">
-          Pesquisar
-        </button>
+<div class="row mb-3">
+  <div class="col-md-6 mb-3">
+    <div class="form-group">
+      <label for="searchById">Código:</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="searchById" name="searchById" [(ngModel)]="codeProduct">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-primary" (click)="getById()">Pesquisar</button>
+        </div>
       </div>
     </div>
-
+  </div>
+  <div class="col-md-6 mb-3">
     <div class="form-group">
-      <div class="row mb-3">
-        <div class="col d-flex justify-content-center">
-          <label for="searchByCategory">Categoria:</label>
-          <input type="text" class="form-row" id="searchByCategory" name="searchByCategory"
-            [(ngModel)]="categoryProduct">
-            <a [routerLink]="['/', 'category', categoryProduct]" class="btn btn-primary float-right">
-            Pesquisar
-            </a>
+      <label for="searchByCategory">Categoria:</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="searchByCategory" name="searchByCategory"
+          [(ngModel)]="categoryProduct">
+        <div class="input-group-append">
+          <a [routerLink]="['/', 'category', categoryProduct]" class="btn btn-primary">Pesquisar</a>
         </div>
       </div>
     </div>
