@@ -15,8 +15,9 @@ Este projeto foi criado com o [Angular CLI](https://github.com/angular/angular-c
 
 - [x] Exibir os produtos existentes.
 - [x] Cadastrar novos produtos.
-- [x] Editar informações dos produtos.
+- [x] Buscar produtos por categoria.
 - [x] Buscar informações dos produtos por ID.
+- [x] Editar informações dos produtos por ID.
 - [x] Reduzir ou deletar produtos de acordo com o ID.
 
 
@@ -47,7 +48,7 @@ Este projeto foi criado com o [Angular CLI](https://github.com/angular/angular-c
 
 ## Como executar
 
-Execute `docker-compose up -d` para subir a imagem e container no Docker. Assim como aplicação backend já deve estar rodando.
+Execute no terminal `docker-compose up -d` para subir a imagem e container no Docker. Assim como aplicação backend já deve estar rodando.
 
 Execute `ng serve --open` para executar a versão de desenvolvimento. Assim irá abrir direto o link `http://localhost:4200/`. 
 A aplicação irá recarregar automaticamente se você realizar alguma alteração nos arquivos.
