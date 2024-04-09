@@ -1,27 +1,62 @@
-# DummyProject
+# DummyProject Frontend - Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.10.
+<br>
 
-## Development server
+<p align="justify">
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Este é um projeto pessoal que pretende por em prática o que aprendi em Angular, com uso do Bootstrap para consumir a API externa [DummyProject](https://github.com/elizapimentel/DummyProducts) em um banco de dados MySQL.
 
-## Code scaffolding
+Este projeto foi criado com o [Angular CLI](https://github.com/angular/angular-cli) versão 17.0.10.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+</p>
 
-## Build
+## **Funcionalidades** 
+<br>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- [x] Exibir os produtos existentes.
+- [x] Cadastrar novos produtos.
+- [x] Editar informações dos produtos.
+- [x] Buscar informações dos produtos por ID.
+- [x] Reduzir ou deletar produtos de acordo com o ID.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## **Tecnologias** 
+<br>
 
-## Running end-to-end tests
+- Angular CLI 17.0.10
+- Bootstrap 5.3.3
+- ngx-bootstrap 12.0.0
+- MySQL 2.18.1
+- Typescript 5.2.2
+- docker-compose 3.8
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## **Como instalar** 
+
+### Frontend
+- Baixe ou clone este repositório usando git clone https://github.com/elizapimentel/DummyProducts-Front
+
+- Dentro do diretório, instale as dependências usando npm install.
+
+### Backend
+
+- Baixe ou clone o repositório do backend usando git clone https://github.com/elizapimentel/DummyProducts
+
+
+
+## Como executar
+
+Execute `docker-compose up -d` para subir a imagem e container no Docker. Assim como aplicação backend já deve estar rodando.
+
+Execute `ng serve --open` para executar a versão de desenvolvimento. Assim irá abrir direto o link `http://localhost:4200/`. 
+A aplicação irá recarregar automaticamente se você realizar alguma alteração nos arquivos.
+
+
+## Dúvidas
+
+<div align = "center">
+<a href="https://www.linkedin.com/in/eliza-pimentel/">
+<img alt="linkedin" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
+</a> 
+</div > 
