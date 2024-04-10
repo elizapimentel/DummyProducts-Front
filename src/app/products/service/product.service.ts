@@ -12,6 +12,7 @@ import { CacheService } from './cache.service';
 export class ProductService {
 
   private readonly URL = 'http://localhost:8080/api/products';
+  private readonly DbURL = 'http://localhost:8080/api/products/db';
 
   constructor(private http: HttpClient, private cacheService: CacheService) {
     // Verifica se o objeto window está disponível
@@ -27,10 +28,10 @@ export class ProductService {
     if (cachedData) {
       return of(cachedData);
     } else {
-      return this.http.get<Product[]>(this.URL).pipe(
+      return this.http.get<Product[]>(this.DbURL).pipe(
         map((products: Product[]) => {
           products.forEach(product => {
-            product.price = parseFloat(product.price).toFixed(2);
+            product.price = parseFloat(product.price).toFixed(2).replace(',', '.');
           });
           this.cacheService.set('products', products);
           return products;
@@ -46,7 +47,7 @@ export class ProductService {
   getById(id: number): Observable<Product> {
     return this.http.get<Product>(`${this.URL}/${id}`).pipe(
       map((product: Product) => {
-        product.price = parseFloat(product.price).toFixed(2);
+        product.price = parseFloat(product.price).toFixed(2).replace(',', '.');
         return product;
       })
     );
@@ -76,7 +77,7 @@ export class ProductService {
           }),
           map((filteredProducts: Product[]) => {
             filteredProducts.forEach(product => {
-              product.price = parseFloat(product.price).toFixed(2);
+              product.price = parseFloat(product.price).toFixed(2).replace(',', '.');
             });
             // Armazena os dados em cache
             this.cacheService.set('category_' + categoryName.toLowerCase(), filteredProducts);
@@ -91,7 +92,12 @@ export class ProductService {
   }
 
   update(id: number, product: Product): Observable<Product> {
-    return this.http.put<Product>(`${this.URL}/update/${id}`, product);
+    return this.http.put<Product>(`${this.URL}/update/${id}`, product).pipe(
+      map((product: Product) => {
+        product.price = parseFloat(product.price).toFixed(2).replace(',', '.');
+        return product;
+      })
+    );
   }
 
   delete(id: number, deleteWholeItem: boolean, quantity?: number): Observable<any> {
