@@ -100,37 +100,17 @@ export class ProductService {
     );
   }
 
-  delete(id: number, deleteWholeItem: boolean, quantity?: number): Observable<any> {
-    let url = `${this.URL}/delete/${id}?deleteWholeItem=${deleteWholeItem}`;
-    if (!deleteWholeItem && quantity) {
-      url += `&quantity=${quantity}`;
-    }
-  
-    return this.http.delete(url).pipe(
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${this.URL}/delete/${id}`).pipe(
       tap(() => {
-        if (!deleteWholeItem) {
-          // Atualizar o cache apenas se for uma exclusão parcial
-          const cachedProducts: Product[] = this.cacheService.get('products');
-          if (cachedProducts) {
-            const updatedProducts = cachedProducts.map(product => {
-              if (product.id === id) {
-                // Diminuir o estoque do produto no cache
-                product.stock -= quantity;
-              }
-              return product;
-            });
-            this.cacheService.set('products', updatedProducts);
-          }
-        } else {
-          // Remover o produto do cache se for uma exclusão completa
+          // Remover o produto do cache após exclusão completa
           const cachedProducts: Product[] = this.cacheService.get('products');
           if (cachedProducts) {
             const updatedProducts = cachedProducts.filter(product => product.id !== id);
             this.cacheService.set('products', updatedProducts);
           }
-        }
-      })
-    );
+        })
+      );
   }
   
 

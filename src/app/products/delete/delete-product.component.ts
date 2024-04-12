@@ -15,10 +15,22 @@ export class DeleteProductComponent implements OnInit {
   @ViewChild('formProduct', { static: true }) formProduct: NgForm;
   @ViewChild('formProductModal', { static: true }) formProductModal: TemplateRef<any>;
 
-  product: Product;
+  product: Product={
+    id: null,
+    title: '',
+    description: '',
+    price: null,
+    discountPercentage: null,
+    rating: null,
+    stock: null,
+    brand: '',
+    category: '',
+    thumbnail: '',
+    images: []
+  
+  };
   deleteModalRef: BsModalRef;
-  stockOptions: number[]; 
-  selectedQuantity: number;
+
 
   constructor(private service: ProductService, private router: Router,
     private route: ActivatedRoute, private modalService: BsModalService,
@@ -29,35 +41,15 @@ export class DeleteProductComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.service.getById(id).subscribe((product: Product) => {
       this.product = product;
-      // Limitando o número máximo de itens a serem excluídos para 10 unidades
-      const maxDeleteQuantity = Math.min(product.stock, 10);
-      this.stockOptions = Array.from({ length: maxDeleteQuantity }, (_, index) => index + 1);
     });
   }
-
-  deleteProduct() {
-    // Verificar se a quantidade selecionada é válida
-    if (!this.selectedQuantity || this.selectedQuantity < 1) {
-      return;
-    }
-  
-    // Chamar o serviço para excluir os itens do estoque
-    this.service.delete(this.product.id, false, this.selectedQuantity)
-      .subscribe(() => {
-        // Navegar de volta para a página de produtos após a exclusão bem-sucedida
-        this.router.navigate(['/products']);
-        // Esconder o modal de confirmação de exclusão
-        this.deleteModalRef.hide();
-      });
-  }
-  
 
   deleteProductWholeItem() {
     this.deleteModalRef = this.modalService.show(this.formProductModal, { class: 'modal-sm' });
   }
 
   confirmDeleteWholeItem() {
-    this.service.delete(this.product.id, true)
+    this.service.delete(this.product.id)
       .subscribe(() => {
         this.router.navigate(['/products']);
         this.deleteModalRef.hide();

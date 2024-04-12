@@ -1,7 +1,7 @@
 <h2>Deletar produto</h2>
 
 <div>
-    <a [routerLink]="['/products']" class="btn btn-outline-primary">
+    <a [routerLink]="['/product', product.id]" class="btn btn-outline-primary">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         Voltar
     </a>
@@ -17,20 +17,12 @@
                     <tr *ngIf="product">
                         <th>Código</th>
                         <th>Produto</th>
-                        <th>Em Estoque:  {{ product.stock }}</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngIf="product">
                         <td>{{ product.id }}</td>
-                        <td>{{ product.title }}</td>
-                        <td class="form-group ">
-                            <label for="stockNumber">Selecione a quantidade a ser excluida </label>
-                            <select class="form-control" id="stockNumber" name="selectedQuantity" [(ngModel)]="selectedQuantity">
-                                <!-- <option value="0" disabled selected>Selecione a quantidade a ser excluida</option> -->
-                                <option *ngFor="let i of stockOptions" [value]="i">{{ i }}</option>
-                            </select>
-                        </td>
+                        <td>{{ product.title }}</td>    
                     </tr>
                 </tbody>
             </table>
@@ -41,7 +33,6 @@
         </div>
 
         <div>
-            <button type="submit" class="btn btn-primary mx-2" (click)="deleteProduct()">Deletar Estoque</button>
             <button type="submit" class="btn btn-danger mx-2" (click)="deleteProductWholeItem()">Deletar
                 Produto</button>
             <a [routerLink]="['/products']" class="btn btn-outline-primary mx-2">
