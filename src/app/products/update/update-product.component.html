@@ -1,7 +1,7 @@
 <h2>Editar produto</h2>
 
 <div>
-    <a [routerLink]="['/products']" class="btn btn-outline-primary">
+    <a [routerLink]="['/product', product.id]" class="btn btn-outline-primary">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Voltar
     </a>
 </div>
@@ -20,7 +20,6 @@
                 <th>Marca</th>
                 <th>Categoria</th>
                 <th>Thumbnail</th>
-                <th>Imagens</th>
             </tr>
         </thead>
         <tbody>
@@ -34,18 +33,24 @@
                 <td><input type="number" [(ngModel)]="product.stock" name="stock"></td>
                 <td><input type="text" [(ngModel)]="product.brand" name="brand"></td>
                 <td><input type="text" [(ngModel)]="product.category" name="category"></td>
-                <td>
-                    <div>
-                        <img [src]="product.thumbnail" [alt]="" class="img-thumbnail">
-                    </div>
-                </td>
-                <td>
-                    <div *ngFor="let image of product.images">
-                        <img [src]="image" [alt]="" class="img-thumbnail">
-                    </div>
-                </td>
+                <td><input type="url" [(ngModel)]="product.thumbnail" name="thumbnail"></td>
             </tr>
         </tbody>
     </table>
+    <td>
+        <div class="form-group">
+            <label for="images">Imagens:</label>
+            <div *ngFor="let image of product.images; let i = index">
+                <div class="input-group mb-3">
+                    <input type="url" class="form-control" id="image_{{i}}" name="image_{{i}}"
+                        [(ngModel)]="product.images[i]">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-danger" (click)="removeImage(i)">Excluir</button>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary mb-3" (click)="addImage()">Adicionar Imagem</button>
+        </div>
+    </td>
     <button type="submit" class="btn btn-primary">Salvar</button>
 </form>

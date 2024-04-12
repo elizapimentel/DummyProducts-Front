@@ -12,7 +12,27 @@ import { ProductService } from '../service/product.service';
 export class UpdateProductComponent implements OnInit {
 
   @ViewChild('formProduct', { static: true }) formProduct: NgForm;
-  product: Product;
+  product: Product= {
+    id: null,
+    title: '',
+    description: '',
+    price: null,
+    discountPercentage: null,
+    rating: null,
+    stock: null,
+    brand: '',
+    category: '',
+    thumbnail: '',
+    images: []
+  };
+
+  addImage() {
+    this.product.images.push(''); // Adiciona um objeto de imagem vazio à lista de imagens
+  }
+  
+  removeImage(index: number) {
+    this.product.images.splice(index, 1); // Remove o objeto de imagem no índice especificado
+  }
 
   constructor(private service: ProductService, private router: Router,
     private route: ActivatedRoute) { }
